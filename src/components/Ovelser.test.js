@@ -1,8 +1,8 @@
 import { beforeEach, afterEach, describe, expect, it, vi } from "vitest";
-import { inputTypes } from "./Ovelser";
+import { inputTypes, testPromise, failTest } from "./Ovelser";
 
 describe("inputType", ()=>{
-    it("should recive a string and return true", ()=>{
+    it("should recieve a string and return true", ()=>{
         expect(inputTypes("")).toBe(true)
     })
     it("should recive a number and return true", ()=>{
@@ -38,3 +38,28 @@ describe("grupperede tests", ()=>{
     })
 })
 
+// describe("testPromise", () => {
+    
+//     it("fetches the api data", async() => {
+
+//         const mockResponse = [
+//                 {
+//                 "userId": 1,
+//                 "id": 1,
+//                 "title": "first post title",
+//                 "body": "first post body"
+//                 }
+//             ]
+
+//         expect(testPromise(mockResponse)).toHaveBeenCalledTimes(1)
+//     })
+// })
+
+describe("failTest", () => {
+    it("should recieve a wrong input at give a failed", () => {
+        expect(failTest(2, 2)).toBe(1)
+    })
+    it("should recieve a correct input at give a passed", () => {
+        expect(failTest(2, 2)).toBe(4)
+    })
+})

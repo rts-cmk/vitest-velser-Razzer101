@@ -11,3 +11,13 @@ export function inputTypes(types){
     )
     return inputType
 }
+
+export async function testPromise(url){
+    const response = await fetch(url)
+    const data = await response.json()
+    return data
+}
+
+export function failTest(a, b){
+    return a + b
+}
