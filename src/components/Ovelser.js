@@ -1,3 +1,5 @@
+import testData from "../assets/data.json"
+
 export function inputTypes(types){
     let inputType = false
     if(typeof types === "string"){
@@ -12,11 +14,11 @@ export function inputTypes(types){
     return inputType
 }
 
-export async function testPromise(url){
-    const response = await fetch(url)
-    const data = await response.json()
-    return data
-}
+// export async function testPromise(url){
+//     const response = await fetch(url)
+//     const data = await response.json()
+//     return data
+// }
 
 export function failTest(a, b){
     return a + b

@@ -51,7 +51,15 @@ describe("grupperede tests", ()=>{
 //                 }
 //             ]
 
-//         expect(testPromise(mockResponse)).toHaveBeenCalledTimes(1)
+//         global.fetch = vi.fn().mockResolvedValue({
+//             json: () => Promise.resolve(mockResponse)
+//         })
+
+//         const result = await testPromise('https://example.com/api')
+
+//         expect(testPromise).toHaveBeenCalledOnce()
+//         expect(fetch).toHaveBeenCalledWith('https://example.com/api')
+//         expect(result).toEqual(mockResponse)
 //     })
 // })
 
