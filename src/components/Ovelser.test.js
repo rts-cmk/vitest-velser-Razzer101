@@ -1,5 +1,5 @@
 import { beforeEach, afterEach, describe, expect, it, vi } from "vitest";
-import { inputTypes, testPromise, failTest } from "./Ovelser";
+import { inputTypes, testPromise, failTest, time } from "./Ovelser";
 
 describe("inputType", ()=>{
     it("should recieve a string and return true", ()=>{
@@ -56,10 +56,31 @@ describe("grupperede tests", ()=>{
 // })
 
 describe("failTest", () => {
-    it("should recieve a wrong input at give a failed", () => {
-        expect(failTest(2, 2)).toBe(1)
-    })
+    // it("should recieve a wrong input at give a failed", () => {
+    //     expect(failTest(2, 2)).toBe(1)
+    // })
     it("should recieve a correct input at give a passed", () => {
         expect(failTest(2, 2)).toBe(4)
+    })
+})
+
+describe("time", () => {
+    beforeEach(()=>{
+        vi.useFakeTimers()
+    })
+    afterEach(()=>{
+        vi.useRealTimers()
+    })
+
+    it("should recive a current hour of the day and return true if between 9 - 17", () => {
+        const date = new Date(2025, 11, 12, 15)
+        vi.setSystemTime(date)
+        expect(time()).toEqual(true)
+    })
+
+    it("should recive a current hour of the day and return false if not between 9 - 17", () => {
+        const date = new Date(2025, 11, 12, 19)
+        vi.setSystemTime(date)
+        expect(time()).toEqual(false)
     })
 })

@@ -21,3 +21,14 @@ export async function testPromise(url){
 export function failTest(a, b){
     return a + b
 }
+
+export function time() {
+  const currentHour = new Date().getHours()
+
+  if (currentHour > 9 && currentHour < 17) {
+    return true
+  } else {
+    return false
+  }
+
+}
